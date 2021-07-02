@@ -1,11 +1,20 @@
 package fr.epita.socra.converter;
 
+import fr.epita.socra.domain.entity.MissionEntity;
 import fr.epita.socra.presentation.mission.UpdateMissionResponse;
-import fr.epita.socra.data.model.Mission;
 
-public class MissionEntityToUpdateMissionResponse implements Converter<Mission, UpdateMissionResponse>{
+public class MissionEntityToUpdateMissionResponse implements Converter<MissionEntity, UpdateMissionResponse>{
     @Override
-    public UpdateMissionResponse convertNotNull(Mission from) {
-        return null;
+    public UpdateMissionResponse convertNotNull(MissionEntity from) {
+        return new UpdateMissionResponse(
+                from.location(),
+                from.duration(),
+                from.price(),
+                from.remote(),
+                from.beginning(),
+                from.job(),
+                from.context(),
+                from.description()
+        );
     }
 }
