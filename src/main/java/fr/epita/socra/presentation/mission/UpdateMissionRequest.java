@@ -37,4 +37,7 @@ public class UpdateMissionRequest {
 
     @NotEmpty
     private String description;
+
+    @NotEmpty
+    private long clientId;
 }
