@@ -18,7 +18,7 @@ public class UpdateMissionRequest {
     private String location;
 
     @NotNull
-    private Date duration;
+    private int duration;
 
     @Nullable
     private int price;

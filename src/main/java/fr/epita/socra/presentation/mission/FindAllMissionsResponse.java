@@ -19,7 +19,7 @@ public class FindAllMissionsResponse
     private String location;
 
     @NotNull
-    private Date duration;
+    private int duration;
 
     @Nullable
     private int price;
