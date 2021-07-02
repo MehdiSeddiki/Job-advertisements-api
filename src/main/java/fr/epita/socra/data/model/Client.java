@@ -1,4 +1,4 @@
-package fr.epita.socra;
+package fr.epita.socra.data.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import lombok.AllArgsConstructor;
@@ -25,6 +25,5 @@ public class Client extends PanacheEntityBase {
     private String name;
 
     @OneToMany(mappedBy = "client")
-    @JoinColumn(name = "client_id")
     private List<Mission> missionList;
 }
