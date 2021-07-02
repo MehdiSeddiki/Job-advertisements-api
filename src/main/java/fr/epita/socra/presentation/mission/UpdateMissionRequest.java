@@ -5,6 +5,7 @@ import io.smallrye.common.constraint.Nullable;
 import lombok.*;
 
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
@@ -23,6 +24,7 @@ public class UpdateMissionRequest {
     @Nullable
     private int price;
 
+    @Min(value = 0, message = "Remote should not be negative")
     @Max(value = 1, message = "Remote should not be greater than 1")
     private float remote;
 
