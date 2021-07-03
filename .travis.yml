@@ -1,0 +1,33 @@
+dist: trusty
+sudo: true
+language: java
+env:
+  - DOCKER_COMPOSE_VERSION=1.25.5
+
+before_install:
+  - chmod +x mvnw
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+services:
+  - docker
+
+jdk:
+  - oraclejdk16
+
+cache:
+  directories:
+    - "$HOME/.m2/repository"
+script:
+  - sudo ./mvnw package -DskipTests
+  - sudo docker-compose up -d
+  - sudo ./mvnw test
+  - sudo docker-compose down
+notifications:
+  email:
+    recipients:
+      - alexia.becouze@epita.fr
+      - radicpaul25@gmail.com
+    on_success: change
+    on_failure: always
